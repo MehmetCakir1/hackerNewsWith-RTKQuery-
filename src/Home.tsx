@@ -7,6 +7,7 @@ const Home = () => {
   const [content,setContent]=useState("")
   const [firstIndex,setFirstIndex]=useState(0)
   const [lastIndex,setLastIndex]=useState(30)
+  const [isLight,setIsLight]=useState(false)
 
     const {
         data,
@@ -37,6 +38,7 @@ let tempData=data?.slice(firstIndex,lastIndex)
 
   return (
     <>
+
     {
       isLoading ? (
         <h1>LOADING...</h1>
@@ -61,6 +63,24 @@ let tempData=data?.slice(firstIndex,lastIndex)
         onClick={increaseIndex}
         >MORE</button>
       </div>
+      <div className="switch"
+      >
+          <label className="theme-switch" htmlFor="checkbox" id="round1">
+            <input type="checkbox" id="checkbox" 
+            onClick={()=>setIsLight(!isLight)}/>
+            <div className="slider round">
+              {
+                isLight ? (
+                  <img src="images/sun.png" alt="sun" className="sun"/>
+                ):(
+                  <img src="images/moon.png" alt="moon" className="moon"/>
+                )
+              }
+            
+            
+          </div>
+          </label>
+        </div>
     </div>
       )
     }
