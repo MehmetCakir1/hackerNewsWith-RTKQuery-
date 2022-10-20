@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { useGetStoriesQuery } from './features/api/newsSlice'
 import SingleNews from './components/SingleNews'
+import "./Styles/Home.scss"
 
 const Home = () => {
   const [content,setContent]=useState("")
@@ -26,6 +27,7 @@ const Home = () => {
     const increaseIndex=()=>{
     setFirstIndex(firstIndex+30)
     setLastIndex(lastIndex+30)
+    window.scrollTo(0,0)
     }
     
 // console.log("content",content)
@@ -34,17 +36,18 @@ let tempData=data?.slice(firstIndex,lastIndex)
 
 
   return (
-    <div>
-      <div>
+    <>
+    {
+      isLoading ? (
+        <h1>LOADING...</h1>
+      ):(
+        <div className="main-container">
+      <div className='btn-div'>
         <button onClick={handleStory}>New Stories</button>
         <button onClick={handleStory}>Best Stories</button>
         <button onClick={handleStory}>Top Stories</button>
       </div>
-      <div>
-        <button
-        onClick={increaseIndex}
-        >MORE</button>
-      </div>
+
       {
         tempData?.map((item:any,index:number)=>{
           return(
@@ -53,8 +56,16 @@ let tempData=data?.slice(firstIndex,lastIndex)
           )
         })
       }
-     
+           <div className='more'>
+        <button
+        onClick={increaseIndex}
+        >MORE</button>
+      </div>
     </div>
+      )
+    }
+        </>
+
   )
 }
 

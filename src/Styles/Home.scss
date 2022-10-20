@@ -1,0 +1,47 @@
+// @use "./variable.scss" as v;
+@import "./_variable.scss";
+
+.main-container{
+    background-color:$bg-color-dark;
+    scroll-behavior: smooth;
+    .btn-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 1rem;
+        button{
+            background-color: $button-bg-color;
+            color:$button-color-dark;
+            transition:$transition;
+            border: none;
+            cursor: pointer;
+            border-radius: $border-radius;
+            padding: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            &:hover{
+                background-color:$button-bg-hover-color;
+            }
+        }
+    }
+    .more{
+        text-align: center;
+        padding-bottom: 1rem;
+        button{
+            background-color: $button-bg-color;
+            color:$button-color-dark;
+            transition:$transition;
+            border: none;
+            cursor: pointer;
+            border-radius: $border-radius;
+            padding: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            &:hover{
+                background-color:$button-bg-hover-color;
+            }
+        }
+    }
+}
+

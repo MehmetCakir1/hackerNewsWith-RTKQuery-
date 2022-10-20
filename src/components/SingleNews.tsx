@@ -1,29 +1,36 @@
-import { secondsToMilliseconds,formatDistanceToNow } from 'date-fns';
-import { useGetSingleStoryQuery } from '../features/api/newsSlice'
+import { secondsToMilliseconds, formatDistanceToNow } from "date-fns";
+import { useGetSingleStoryQuery } from "../features/api/newsSlice";
+import "../Styles/SingleNews.scss";
 
-
-const SingleNews = ({storyId,index}:any) => {
-    const {data,isLoading}=useGetSingleStoryQuery(storyId)
-    const milliseconds=(secondsToMilliseconds(data?.time));
+const SingleNews = ({ storyId, index }: any) => {
+  const { data, isLoading } = useGetSingleStoryQuery(storyId);
+  const milliseconds = secondsToMilliseconds(data?.time);
 
   return (
     <>
-    {
-      isLoading ? (
-      <h1>loading...</h1>
-      ):
-      (
-        <div style={{padding:"2rem"}}>
-        <p>{index+1}</p>
-        <a href={data?.url} target="_blank">{data?.title}</a> 
-        <p>by {data?.by}</p>
-        <i>{formatDistanceToNow( new Date(milliseconds),{addSuffix: true}) }</i>
-      </div>
-      )
-    }
+      {isLoading ? (
+        null
+      ) : (
+        <div className="single-container">
+          <p className="index-number">{index + 1}</p>
+          <div>
+            <a href={data?.url} target="_blank" className="link">
+              {data?.title}
+            </a>
+            <div className="subtext">
+              <p className="author">by {data?.by}</p>
+              <span>|</span>
+              <p className="date">
+                {formatDistanceToNow(new Date(milliseconds), {
+                  addSuffix: true,
+                })}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default SingleNews
-
+export default SingleNews;
