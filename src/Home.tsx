@@ -31,6 +31,8 @@ const Home = () => {
 // console.log("content",content)
 let tempData=data?.slice(firstIndex,lastIndex)
 
+
+
   return (
     <div>
       <div>
@@ -46,7 +48,7 @@ let tempData=data?.slice(firstIndex,lastIndex)
       {
         tempData?.map((item:any,index:number)=>{
           return(
-            <SingleNews key={item.id}
+            <SingleNews key={index}
              storyId={item} index={index+firstIndex}/>
           )
         })
