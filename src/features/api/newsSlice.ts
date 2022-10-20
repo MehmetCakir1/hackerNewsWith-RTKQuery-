@@ -4,13 +4,13 @@ export const newsSlice=createApi({
     reducerPath:"news",
     baseQuery:fetchBaseQuery({baseUrl:"https://hacker-news.firebaseio.com/v0"}),
     endpoints:(builder)=>({
-        getNews:builder.query<any,void>({
-            query:()=>`/newstories.json`
+        getStories:builder.query<any,string>({
+            query:(content)=>`/${content}.json`
         }),
-        getSingleNews:builder.query<any,void>({
+        getSingleStory:builder.query<any,void>({
             query:(storyId)=>`/item/${storyId}.json`
         }),
     })
 })
 
-export const {useGetNewsQuery,useGetSingleNewsQuery}=newsSlice
+export const {useGetStoriesQuery,useGetSingleStoryQuery}=newsSlice
