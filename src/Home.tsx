@@ -4,6 +4,8 @@ import SingleNews from './components/SingleNews'
 
 const Home = () => {
   const [content,setContent]=useState("")
+  const [firstIndex,setFirstIndex]=useState(0)
+  const [lastIndex,setLastIndex]=useState(30)
 
     const {
         data,
@@ -13,12 +15,22 @@ const Home = () => {
     }=useGetStoriesQuery(!content ? "newstories" : content )
 
     const handleStory=(e:any)=>{
+      setFirstIndex(0)
       let tempArr=e.target.innerText.split(" ")
       let tempContent=tempArr[0].toLowerCase()+tempArr[1].toLowerCase()
     setContent(tempContent)
     }
+
+
+
+    const increaseIndex=()=>{
+    setFirstIndex(firstIndex+30)
+    setLastIndex(lastIndex+30)
+    }
     
-console.log("content",content)
+// console.log("content",content)
+let tempData=data?.slice(firstIndex,lastIndex)
+
   return (
     <div>
       <div>
@@ -26,14 +38,20 @@ console.log("content",content)
         <button onClick={handleStory}>Best Stories</button>
         <button onClick={handleStory}>Top Stories</button>
       </div>
+      <div>
+        <button
+        onClick={increaseIndex}
+        >MORE</button>
+      </div>
       {
-        data?.slice(0,10)?.map((item:any,index:number)=>{
+        tempData?.map((item:any,index:number)=>{
           return(
-            <SingleNews key={index}
-             storyId={item}/>
+            <SingleNews key={item.id}
+             storyId={item} index={index+firstIndex}/>
           )
         })
       }
+     
     </div>
   )
 }
