@@ -1,19 +1,28 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useGetStoriesQuery } from './features/api/newsSlice'
 import SingleNews from './components/SingleNews'
 import "./Styles/Home.scss"
+import { useLocation } from 'react-router-dom'
+
+
+const getStorageTheme = () => {
+  let theme= "light";
+  if (localStorage.getItem('theme')) {
+    theme = localStorage.getItem('theme');
+  }
+  return theme;
+};
 
 const Home = () => {
   const [content,setContent]=useState("")
   const [firstIndex,setFirstIndex]=useState(0)
   const [lastIndex,setLastIndex]=useState(30)
-  const [isLight,setIsLight]=useState(false)
+  const [theme,setTheme]=useState( getStorageTheme())
 
     const {
         data,
         isLoading,
-        isError,
-        error
+        isSuccess
     }=useGetStoriesQuery(!content ? "newstories" : content )
 
     const handleStory=(e:any)=>{
@@ -23,25 +32,35 @@ const Home = () => {
     setContent(tempContent)
     }
 
-
+console.log(isSuccess)
 
     const increaseIndex=()=>{
     setFirstIndex(firstIndex+30)
     setLastIndex(lastIndex+30)
     window.scrollTo(0,0)
     }
+
+    const changeTheme=()=>{
+      if (theme === 'light') {
+          setTheme('dark');
+        } else {
+          setTheme('light');
+        }
+  }
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
     
-// console.log("content",content)
 let tempData=data?.slice(firstIndex,lastIndex)
 
-
-
   return (
-    <div className={`${isLight ? "light" : "dark"}`}>
+    <div
+    className={`${theme==="light" ? "light" : "dark"}`}
+    >
 
     {
       isLoading ? (
-        <h1>LOADING...</h1>
+        <h1 className='loading'>LOADING...</h1>
       ):(
         <div className="main-container">
       <div className='btn-div'>
@@ -68,18 +87,18 @@ let tempData=data?.slice(firstIndex,lastIndex)
       >
           <label className="theme-switch" htmlFor="checkbox" id="round1">
             <input type="checkbox" id="checkbox" 
-            onClick={()=>setIsLight(!isLight)}/>
-            <div className="slider round">
+            onClick={changeTheme}
+            />
+             <div className="slider round">
               {
-                isLight ? (
+                theme==="light" ? (
                   <img src="images/sun.png" alt="sun" className="sun"/>
                 ):(
                   <img src="images/moon.png" alt="moon" className="moon"/>
                 )
               }
-            
-            
-          </div>
+  
+          </div> 
           </label>
         </div>
     </div>

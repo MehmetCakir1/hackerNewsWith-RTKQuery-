@@ -4,6 +4,10 @@
     .main-container{
       background-color: $bg-color-light;
     }
+    .loading{
+        background-color: $bg-color-light;
+        color:$text-primary-color-light
+    }
     .single-container {
       background-color: $card-bg-light;
     }
@@ -26,6 +30,10 @@
   .dark {
     .main-container{
       background-color: $bg-color-dark;
+    }
+    .loading{
+        background-color: $bg-color-dark;
+        color:$text-primary-color-dark
     }
     .single-container{
       background-color: $card-bg-dark;
