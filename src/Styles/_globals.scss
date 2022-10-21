@@ -1,0 +1,49 @@
+@import "./variable";
+
+.light {
+    .main-container{
+      background-color: $bg-color-light;
+    }
+    .single-container {
+      background-color: $card-bg-light;
+    }
+    .index-number{
+      color:$text-secondary-color-dark;
+    }
+    .link{
+      color:$text-primary-color-light;
+    }
+    .subtext{
+      color:$text-secondary-color-light;
+    }
+    button{
+        color:$button--color-light;
+    }
+    .slider{
+        background-color: $slider-bg-light;
+    }
+  }
+  .dark {
+    .main-container{
+      background-color: $bg-color-dark;
+    }
+    .single-container{
+      background-color: $card-bg-dark;
+    }
+    .index-number{
+      color:$text-secondary-color-dark;
+    }
+    .link{
+      color:$text-primary-color-dark;
+    }
+    .subtext{
+      color:$text-secondary-color-dark;
+    }
+    button{
+        color:$button-color-dark;
+    }
+    .slider{
+        background-color: $slider-bg-dark;
+    }
+  }
+  

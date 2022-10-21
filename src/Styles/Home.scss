@@ -1,8 +1,13 @@
 // @use "./variable.scss" as v;
 @import "./_variable.scss";
+@import "./globals";
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .main-container{
-    background-color:$bg-color-dark;
     scroll-behavior: smooth;
     .btn-div{
         display: flex;
@@ -11,39 +16,19 @@
         padding: 2rem;
         gap: 1rem;
         button{
-            background-color: $button-bg-color;
-            color:$button-color-dark;
-            transition:$transition;
-            border: none;
-            cursor: pointer;
-            border-radius: $border-radius;
-            padding: 0.5rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            &:hover{
-                background-color:$button-bg-hover-color;
-            }
+         @include button-features
         }
     }
     .more{
         text-align: center;
         padding-bottom: 1rem;
-        button{
-            background-color: $button-bg-color;
-            color:$button-color-dark;
-            transition:$transition;
-            border: none;
-            cursor: pointer;
-            border-radius: $border-radius;
-            padding: 0.5rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            &:hover{
-                background-color:$button-bg-hover-color;
-            }
+        .more-btn{
+         @include button-features
         }
     }
 }
+
+//dark mode switch
 .switch{
     position: absolute;
     right: 2rem;
@@ -62,7 +47,6 @@
   }
   
   .slider {
-    background-color: #E6E8EB;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -108,3 +92,16 @@
     border-radius: 50%;
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+

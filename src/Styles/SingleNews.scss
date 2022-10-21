@@ -1,4 +1,5 @@
 @import "./_variable.scss";
+@import "./globals";
 
 .single-container{
     border:1px solid gray;
@@ -9,16 +10,14 @@
     padding: 0.4rem 0.4rem 0 0;
     margin: 1rem auto;
     border-radius: $border-radius;
-    background-color: $card-bg-dark;
     .index-number{
         font-size: 1.5rem;
         font-weight: 700;
         margin:0 1rem;
-        color:$text-secondary-color-dark;
+        
     }
     .link{
         text-decoration: none;
-        color:$text-primary-color-dark;
         font-size: 1rem;
         font-weight: 500;
     }
@@ -27,7 +26,6 @@
         justify-content: start;
         align-items: center;
         gap: 0.5rem;
-        color:$text-secondary-color-dark;
         .author{
             text-transform: capitalize;
         }

@@ -37,7 +37,7 @@ let tempData=data?.slice(firstIndex,lastIndex)
 
 
   return (
-    <>
+    <div className={`${isLight ? "light" : "dark"}`}>
 
     {
       isLoading ? (
@@ -61,6 +61,7 @@ let tempData=data?.slice(firstIndex,lastIndex)
            <div className='more'>
         <button
         onClick={increaseIndex}
+        className="more-btn"
         >MORE</button>
       </div>
       <div className="switch"
@@ -84,7 +85,7 @@ let tempData=data?.slice(firstIndex,lastIndex)
     </div>
       )
     }
-        </>
+        </div>
 
   )
 }
