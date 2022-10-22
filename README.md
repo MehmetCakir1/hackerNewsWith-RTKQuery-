@@ -6,11 +6,11 @@
 - __SCSS__<br/>
 - __TypeScript__<br/>
 - __date-fns__<br/>
-- __Dark mode<br/>
+- __Dark mode__<br/>
 - __I used "https://hacker-news.firebaseio.com/v0" in order to fetch data__<br/>
 - __I used RTK-Query to fetch the data__<br/>
 - __I used SCSS for syling__<br/>
-- __I created a button to switch from dark mode to light mode or vive verse__<br/>
+- __I created a toggle to switch from dark mode to light mode or vive verse__<br/>
 - __I used date-fns to edit the dates__<br/>
 
 
