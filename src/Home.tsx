@@ -7,7 +7,7 @@ import { getStorageTheme } from './utils/utils'
 
 
 const Home = () => {
-  const [content,setContent]=useState("")
+  const [content,setContent]=useState("newstories")
   const [firstIndex,setFirstIndex]=useState(0)
   const [lastIndex,setLastIndex]=useState(30)
   const [theme,setTheme]=useState( getStorageTheme())
@@ -15,7 +15,7 @@ const Home = () => {
     const {
         data,
         isLoading,
-    }=useGetStoriesQuery(!content ? "newstories" : content )
+    }=useGetStoriesQuery(content )
 
 
     const handleStory=(e:any)=>{
@@ -55,9 +55,21 @@ let tempData=data?.slice(firstIndex,lastIndex)
       ):(
         <div className="main-container">
       <div className='btn-div'>
-        <button onClick={handleStory}>New Stories</button>
-        <button onClick={handleStory}>Best Stories</button>
-        <button onClick={handleStory}>Top Stories</button>
+        <button onClick={handleStory}>
+          <span className={`${content=="newstories" && "underline"}`}>
+          New Stories
+          </span>
+          </button>
+        <button onClick={handleStory}>
+        <span className={`${content=="beststories" && "underline"}`}>
+          Best Stories
+          </span>
+          </button>
+        <button onClick={handleStory}>
+        <span className={`${content=="topstories" && "underline"}`}>
+          Top Stories
+          </span>
+          </button>
       </div>
       {
         tempData?.map((item:any,index:number)=>{

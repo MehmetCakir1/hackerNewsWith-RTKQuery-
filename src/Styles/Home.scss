@@ -18,8 +18,13 @@
         padding:4rem 2rem 0.5rem;
         gap: 1rem;
         button{
-         @include button-features
+         @include button-features;
+         .underline{
+          text-decoration: underline;
+          text-underline-offset: 5px;
+         }
         }
+       
     }
     .more{
         text-align: center;
@@ -29,6 +34,7 @@
         }
     }
 }
+
 
 //dark mode switch
 .switch{
