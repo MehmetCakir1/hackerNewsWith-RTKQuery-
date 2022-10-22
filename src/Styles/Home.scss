@@ -10,11 +10,12 @@
 .main-container{
     scroll-behavior: smooth;
     min-height: 100vh;
+    padding: 0 0.3rem;
     .btn-div{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
+        padding:4rem 2rem 0.5rem;
         gap: 1rem;
         button{
          @include button-features

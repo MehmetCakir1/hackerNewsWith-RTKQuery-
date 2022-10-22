@@ -6,6 +6,9 @@ const SingleNews = ({ storyId, index }: any) => {
   const { data, isLoading } = useGetSingleStoryQuery(storyId);
   const milliseconds = secondsToMilliseconds(data?.time);
 
+  console.log(data)
+
+
   return (
     <>
       {isLoading ? (

@@ -8,11 +8,14 @@ $bg-color-light:#e9ecef;
 $button-bg-color:transparent;
 $button-bg-hover-color:#ff6600;
 $button-color-dark:#dee2e6;
-$button--color-light:rgb(112, 107, 107);
+$button--color-light:rgb(95, 91, 91);
 $card-bg-light:#f8f9fa;
 $card-bg-dark:#343a40;
 $slider-bg-light:#495057;
 $slider-bg-dark:#E6E8EB;
+$search-btn-bg:#ff6600;
+$search-btn-text-light:#E6E8EB;
+$search-btn-bg-dark:#E6E8EB;
 
 
 $border-radius: 0.25rem;
@@ -21,10 +24,10 @@ $transition: all 0.3s linear;
 
 @mixin button-features{
     transition:$transition;
-    border: none;
+    border:none;
     cursor: pointer;
     border-radius: $border-radius;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem .4rem;
     font-size: 1.1rem;
     text-transform: uppercase;
     font-weight:600;

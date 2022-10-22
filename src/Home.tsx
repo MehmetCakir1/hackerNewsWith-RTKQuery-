@@ -2,16 +2,9 @@ import {useEffect, useState} from 'react'
 import { useGetStoriesQuery } from './features/api/newsSlice'
 import SingleNews from './components/SingleNews'
 import "./Styles/Home.scss"
-import { useLocation } from 'react-router-dom'
+import { getStorageTheme } from './utils/utils'
 
 
-const getStorageTheme = () => {
-  let theme= "light";
-  if (localStorage.getItem('theme')) {
-    theme = localStorage.getItem('theme');
-  }
-  return theme;
-};
 
 const Home = () => {
   const [content,setContent]=useState("")
@@ -22,8 +15,8 @@ const Home = () => {
     const {
         data,
         isLoading,
-        isSuccess
     }=useGetStoriesQuery(!content ? "newstories" : content )
+
 
     const handleStory=(e:any)=>{
       setFirstIndex(0)
@@ -31,15 +24,11 @@ const Home = () => {
       let tempContent=tempArr[0].toLowerCase()+tempArr[1].toLowerCase()
     setContent(tempContent)
     }
-
-console.log(isSuccess)
-
     const increaseIndex=()=>{
     setFirstIndex(firstIndex+30)
     setLastIndex(lastIndex+30)
     window.scrollTo(0,0)
     }
-
     const changeTheme=()=>{
       if (theme === 'light') {
           setTheme('dark');
@@ -52,6 +41,8 @@ console.log(isSuccess)
   }, [theme]);
     
 let tempData=data?.slice(firstIndex,lastIndex)
+
+// console.log(data)
 
   return (
     <div
@@ -68,7 +59,6 @@ let tempData=data?.slice(firstIndex,lastIndex)
         <button onClick={handleStory}>Best Stories</button>
         <button onClick={handleStory}>Top Stories</button>
       </div>
-
       {
         tempData?.map((item:any,index:number)=>{
           return(
