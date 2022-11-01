@@ -20,6 +20,7 @@ const Home = () => {
 
     const handleStory=(e:any)=>{
       setFirstIndex(0)
+      setLastIndex(30)
       let tempArr=e.target.innerText.split(" ")
       let tempContent=tempArr[0].toLowerCase()+tempArr[1].toLowerCase()
     setContent(tempContent)
